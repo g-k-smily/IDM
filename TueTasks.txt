@@ -1,0 +1,569 @@
+Today Assignments:
+
+1)Moving one script to another directory
+
+echo "present working directory"
+
+pwd
+
+read TargetDir
+
+ls
+
+if [ -d $TargetDir ]
+
+then
+       
+	 mv *sh $TargetDir
+
+else
+        
+	mkdir $TargetDir
+        
+	mv *sh $TargetDir
+
+fi
+********************************************************
+
+2)to find input string location
+
+echo "Enter A String"
+read Str
+echo "Enter character You wanted find in $Str"
+read C
+awk -v a="$Str" -v b="$C" 'BEGIN{print index(a,b)}'
+
+
+
+************************************************************
+3)Count lines,word spaces
+
+echo "Enter a file name"
+
+read FN
+
+if [ -z $FN ]
+
+then
+        
+	echo "File is Empty"
+
+else
+        
+	echo "Number of words in File: $(cat $FN | wc -w)"
+        
+	echo "Number of Lines in File: $(cat $FN | wc -l)"
+        
+	echo "Number of White spaces in File: $(cat $FN | grep -o " "| wc -l)"
+        
+	echo "Number of Charcaters in File : $(cat $FN | wc -c)"
+
+fi
+ 
+
+*************************************************************************
+4)uppercase
+
+
+
+#!/bin/sh
+
+echo "Enter filename"
+
+read FN
+
+echo "content of $FN before converting into UpeerCase"
+
+cat $FN
+
+echo "Content of $FN After Converting into UpperCase"
+
+tr '[ a-z ]' '[ A-Z ]' < $FN
+
+
+****************************************************************************
+5)curent directory,date etc
+
+echo "Present WorkingDirectory is : " $(pwd)
+
+echo "Clear the screen : " $(clear)
+
+echo "Current Date is " $(date)
+
+echo "Creating a directory"
+mkdir Fd
+
+cd Fd
+
+touch file1 file2
+
+ls
+
+
+
+***************************************************************************
+6)phone number
+
+grep -P '^(\d{3}-\d{3}-\d{4}|\d{3}\d{3}\d{4})$' phonenum.txt
+
+****************************************************************************
+7)remove special characters
+  
+sed 's/[!@#\$%^&*(){}!;.><|]//g' wc
+.txt
+*******************************************************************************
+
+
+
+
+
+
+
+								Thursday Tasks(24/09/2020)
+
+
+1)Write a shell script to print the characters of an input string into reverse order.
+
+echo  "Enter string:"
+
+read string
+len=${#string}
+
+for (( i=$len-1; i>=0; i-- ))
+
+do
+        
+	reverse="$reverse${string:$i:1}"
+
+done
+
+echo "$reverse"
+
+***************************************************************************************************************
+
+2))Write a shell script to remove all words that occur more than once in a list.
+   
+
+
+echo "Enter the Stirng"
+
+
+read STRING
+
+
+echo  "$STRING" | xargs -n1 | sort -u | xargs
+
+
+
+
+******************************************************************************************************************
+
+3)Write a shell script to take backup of all c files.
+
+
+#!/bin/sh
+
+echo "Enter the file name"
+
+read FN
+
+if [ -f $FN ]
+
+then
+         
+	cp $FN $FN.bak
+    
+    	echo "File backed up successfully"
+else
+        
+	echo "File does not exists"
+fi
+
+***********************************************************************************************************************************
+
+
+4)Write a shell script that takes a command-line argument and reports whether it is a directory, a file, or something else.
+
+echo "Enter file"
+
+read file
+  
+if [ -f $file ]
+  
+then
+    
+	echo "It is a file"
+  
+elif [ -d $file ]
+  
+then
+
+	echo "It is directoy"
+  
+else
+    
+echo "Not exits"
+
+fi
+ 
+
+****************************************************************************************************************************************
+
+5)To find out the greatest and smallest element of an array.
+
+
+read -a integers
+
+large=${integers[0]}
+
+small=${integers[0]}
+
+for i in ${integers[@]}
+
+do
+     
+	if [[ $i -gt $large ]]
+
+         then
+        
+		large="$i"
+     
+	fi
+
+
+     
+	if [[ $i -lt $small ]]
+    
+	 then
+        
+	small="$i"
+     
+	fi
+
+done
+
+
+
+echo "The largest number is $large"
+
+echo "The smallest number is $small"
+ 
+
+
+
+
+
+
+************************************************************************************************************************************
+6)Write a shell script to display a three digit number in English words.
+
+
+echo -n "Enter number"
+
+read n
+
+len=$(echo $n | wc -c)
+
+len=$(( $len - l ))
+
+echo "your number $n in words:"
+
+for (( i=1; i<=$len; i++ ))
+
+do
+        
+	digit=$(echo $n | cut -c $i)
+
+        case $digit in
+                
+		0)echo -n "Zero";;
+
+		1)echo -n "one";;
+                
+		2)echo -n "two";;
+                
+		3)echo -n "three";;
+            
+		4)echo -n "four";;
+                
+		5)echo -n "five";;
+                
+		6)echo -n "six";;
+                
+		7)echo -n "seven";;
+                
+		8)echo -n "eight";;
+                
+		9)echo -n "nine";;
+        
+	esac
+
+done
+
+echo
+
+
+
+
+*********************************************************************************************************************************************
+
+7)Write a program in UNIX to accept range of months and display calendar within that range.
+
+echo "enter starting month"
+
+read start
+
+echo "enter ending month"
+
+read end
+
+echo "enter year"
+
+read year
+
+while [ $start -le $end ]
+
+do
+
+	cal $start $year
+
+	start=`expr $start + 1`
+
+done
+
+
+
+
+****************************************************************************************************************************************************
+8)To print all the files and total number of files in given directory.
+
+
+
+echo "Enter the directory name"
+
+read DIR
+
+if [ -d $DIR ]
+
+then
+
+echo "List of all files in the given directory"
+
+ls $DIR
+
+echo "Total number of files in a given directory"
+
+ls $DIR | wc -l
+
+else
+
+echo "ENter proper directory name"
+
+fi
+
+
+
+/******************************************************************************************************************************************************
+
+
+
+								Firday TAsks(25/09/2020)
+
+1)FActorial
+
+
+
+echo "Enter a number"
+
+read num
+
+fact=1
+
+while [ $num -gt 1 ]
+
+do
+  
+	fact=$((fact * num))
+  
+	num=$((num - 1))
+
+done
+
+echo "The factorial for the given number is $fact"
+ 
+
+*************************************************************************************************************************************************************
+
+
+2)Even num in series
+
+echo "Enter a limit:"
+
+read num
+
+for ((even = 2; even <= num; even += 2));
+
+do
+    
+	echo "$even"
+
+done
+ 
+
+*******************************************************************************************************************************************************************
+
+3)Sum of series
+
+
+echo "Enter number"
+
+read N
+
+i=1
+ sum=0
+
+while [ $i -le $N ]
+
+do
+ 
+
+        sum=$((sum + $i))
+        
+	i=$((i + 1))
+
+done
+
+echo "The sum of series is : $sum "
+ 
+
+*******************************************************************************************************************
+
+
+4)Employee Salary details
+
+
+
+
+#!/bin/sh
+
+echo "Enter Basic Salary"
+
+read Bs
+
+TA=$((Bs/100*15))
+
+echo "TA is : $TA"
+DA=$((BS/100*2))
+
+echo "DA is : $DA"
+HRA=$((Bs/100*10))
+
+echo "HRA is : $HRA"
+IT=$((Bs/100*5))
+
+echo "Income Tax is : $IT"
+PF=$((Bs/100*10))
+
+echo "PF is : $PF"
+NS=$((Bs + TA + DA + HRA - IT - PF))
+
+echo "Net Salary is : $NS"
+ 
+
+
+
+
+************************************************************************************************************************************************
+
+
+
+5)5)Write a shell script to generate the series 1, 5, 2, 10, 3, 15,………….50.
+
+#!/bin/sh
+
+echo "Enter Max limit"
+
+read L
+
+j=1
+
+k=1
+
+echo "Series is : "
+
+for (( i=1; $i <= $L; i++ ));
+
+do
+       
+	if [ $(($i % 2)) == 1 ];
+
+        then
+                
+		echo -n "$k "
+                
+		k=$((k + 1))
+        
+	else
+                
+		echo -n "$((j*5)) "
+                
+		j=$((j + 1))
+        
+	fi
+
+done
+
+echo
+
+
+*****************************************************************************************************************************************************
+
+
+
+
+6)Grades of two Students
+
+
+
+#!/bin/sh
+
+echo "Enter 2 Subjects Marks of a Student"
+
+read S1
+
+read S2
+
+Sum=$((S1 + S2))
+
+Avg=`expr $Sum / 2`
+
+echo "$Avg and Sum is $Sum"
+
+if [ $Avg -ge 60 ]
+
+then
+
+	echo "Grade A"
+
+elif [ $Avg -ge 50 -a $Avg -lt 60 ]
+
+then
+
+	echo "Grade B"
+
+elif [ $Avg -ge 40 -a $Avg -lt 50 ]
+
+then
+
+	echo "Grade C"
+
+else
+
+	echo "Fail"
+
+Sfi
+
+
+
+
+********************************************************************************************************************

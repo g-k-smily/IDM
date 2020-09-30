@@ -1,0 +1,97 @@
+1.Algorithm  ------->checking armstrong number or not
+Algorithm isArmstrong(val number<Integer>)
+pre number is armstrong number
+post number is armstrong number
+return string
+1.let number be the given number 
+2.if number < 0
+  then 
+  return negative number
+3.else
+  then 
+  temp=number,i,rev=0
+     while(number > 0)
+        i = number % 10
+        rev = rev + i * i * i
+        number = number / 10
+      if(temp == rev)
+          return number is armstrong
+4.return number is not armstrong
+
+------------------------------------------------------------------
+
+2.Algorithm  ------->finding factorial of number
+Algorithm isFactorial(val number<Integer>)
+pre factorial of number
+post factorial of number
+return fact
+1.let number be the given number 
+  fact = 1
+2.for(int i=1; i<=number; i++)
+     fact = fact * i
+3.return fact
+
+--------------------------------------------------------------------
+
+3.Algorithm  ------->list of factors of a number
+Algorithm listFactor(val number<Integer>)
+pre list of factors of number
+post list of factors of number
+return factors
+1.let number be the given number 
+  list<integer> factor = new ArrayList<>()
+2.for(int i = 1; i <= number; i++)
+     if(number % i == 0)
+        factor.add(i)
+3.return factor
+
+-----------------------------------------------------------------------
+
+4.Algorithm  ------->sum of factors of a number
+Algorithm sumFactor(val number<Integer>)
+pre sum of factors of number
+post sum of factors of number
+return sum
+1.let number be the given number 
+  sum = 0
+2.for(int i = 1; i <= number; i++)
+     if(number % i == 0)
+        sum = sum + i
+3.return sum
+
+
+-----------------------------------------------------------------------------
+
+5.Algorithm  ------->number is palindrome or not
+Algorithm isPalindrome (val number<Integer>)
+pre number is palindrome
+post number is palindrome
+return string
+1.let number be the given number
+  temp= number,i,rev=0
+2.if(number < 0)
+  then
+  return number is negative
+3.else 
+  then
+    while(number > 0)
+      i = numbetr % 10
+      rev = rev * 10 + i
+      number = number / 10
+         
+        if(temp == rev)
+           return number is palindrome
+4.return number is not palindrome
+
+-------------------------------------------------------------------------------
+6.Algorithm  ------->search element in an array
+Algorithm search(val arr[],key )
+pre searching element in an array
+post search element is found at index
+return index
+1.let array be the input
+2.for(int i = 0; i < arr.length; i++)
+     if(arr[i] == key)
+         then
+         return i
+4.return 0
